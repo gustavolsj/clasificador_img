@@ -32,7 +32,7 @@ let pconf = document.querySelector('.box-result p')
             let status = document.querySelector('.init_status')
             status.innerHTML = 'Cargando el modelo .... <span class="fa fa-spinner fa-spin"></span>'
             model = await tf.loadLayersModel('./tensorflowjs-model/model.json');
-            status.innerHTML = 'Modelo cargado con éxito  <span class="fa fa-check"></span>'
+            status.innerHTML = 'Modelo cargado Ok</span>'
         }
 
         // -----------------------------------------------IDENTIFICAR    
@@ -86,8 +86,8 @@ let pconf = document.querySelector('.box-result p')
             let uploadedImage = e.target.value
             if (uploadedImage){
                 document.getElementById("blankFile-1").innerHTML = uploadedImage.replace("C:\\fakepath\\","")
-                document.getElementById("choose-text-1").innerText = "Cambiar de fotografía"
-                document.querySelector(".success-1").style.display = "inline-block"
+                document.getElementById("choose-text-1").innerText = "Cambiar foto"
+                // document.querySelector(".success-1").style.display = "inline-block"
 
                 let extension = uploadedImage.split(".")[1]
                 if (!(["doc","docx","pdf"].includes(extension))){
@@ -100,12 +100,12 @@ let pconf = document.querySelector('.box-result p')
             }
             let file = this.files[0]
             if (file){
-                boxResult.style.display = 'block'
+                // boxResult.style.display = 'block'
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
                 reader.addEventListener("load", function(){
                     
-                    img.style.display = "block"
+                    // img.style.display = "block"
                     img.setAttribute('src', this.result);
                 });
             }

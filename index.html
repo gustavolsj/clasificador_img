@@ -12,70 +12,75 @@
 </head>
 
 <body>
-    <h1>Clasificación de la Tipología Fotográfica</h1>
-    Prueba la aplicación con tus propias fotografías o utiliza alguna de <a
-        href="https://github.com/gustavolsj/image-recognition/tree/master/conjunto de datos/testing">estas</a>
-
-
-    <hr>
-
-    <!-- --------------------------------------CARGA IMAGEN----------------------------------------------- -->
-    <div class="upload-btn-wrapper">
-        <button class="btn upload-file font-weight-500">
-            <span class="upload-btn">
-                <i class="material-icons d-block font-50 pb-2">cloud_upload</i>
-                <p id="choose-text-1">Seleciona una imagen de la fotografía a identificar</p>
-            </span>
-            <span class="upload-select-button" id="blankFile-1">
-                *archivos de tipo .png, .jpg, .jpeg, .jfif
-            </span>
-            <span class="success-1">
-                <i class="material-icons text-success">check</i>
-            </span>
-        </button>
-        <input type="file" name="uploadImage" id="uploadImage">
+    <div>
+        <h1>Clasificación de la Tipología Fotográfica</h1>
+        Prueba la aplicación con tus propias fotografías o utiliza alguna de <a
+            href="https://github.com/gustavolsj/image-recognition/tree/master/conjunto de datos/testing"
+            target="blank">estas</a>
+        <hr>
     </div>
 
 
 
-    <p class="tutorial">Para saber como funciona visita este 😇 <a
-            href="https://medium.com/@rexsimiloluwa/building-a-plant-disease-classification-web-app-in-keras-and-tensorflow-js-d435829213fa"
-            target="blank">enlace </a> →
-        <p>Aplicación web construida con ❤️ para los archivistas latinoamericanos utilizando Tensorflow, Tensorflow.js,
-            Python, Javascript, HTML5</p>
 
-        <!-- ---------------------------------------IMAGEN----------------------------------------- -->
 
-        <div class="row">
-            <div class="box">
-                <img src="" alt="" id="image" width="224" height="224">
+    <!-- ---------------------------------------IMAGEN----------------------------------------- -->
+
+    <div class="row">
+        <div class="box-foto">
+            <!-- <img src="" alt="" id="image" width="500px" height="500px"> -->
+            <img src="" alt="" id="image">
+        </div>
+
+        <div class="box-result">
+            <!-- --------------------------------------CARGA IMAGEN----------------------------------------------- -->
+            <div class="upload-btn-wrapper">
+                <button class="btn upload-file font-weight-500">
+                    <span class="upload-btn">
+                        <i class="material-icons d-block font-10 pb-2">cloud_upload</i>
+                        <p id="choose-text-1">Subir foto</p>
+                    </span>
+                    <span class="upload-select-button" id="blankFile-1">
+                        archivos .png, .jpg, .jpeg
+                    </span>
+                    <span class="success-1">
+                        <i class="material-icons text-success">check</i>
+                    </span>
+                </button>
+                <input type="file" name="uploadImage" id="uploadImage">
             </div>
+
 
             <!-- ---------------------------------------RESULTADO----------------------------------------- -->
 
-
-            <div class="box box-result">
-                <div class="init_status"></div>
-                <div>
-                    <h2>La tipología fotográfica es: <span class="pred_class"></span></h2>
-
-                </div>
-                <div class="accuracy">
-                    <div class="progress" id="progress">
-                        <div class="inner">
-
-                        </div>
-                    </div>
-
-                </div>
-                <p style="padding : 10px;"> Confianza : <b><span class="confidence"></span></b> %</p>
+            <div class="init_status"></div>
+            <div>
+                <h2 style="text-align: center;">La tipología es: </h2>
             </div>
+            <div class="accuracy">
+                <div class="progress" id="progress">
+                    <div class="inner">
+                    </div>
+                </div>
+            </div>
+            <h1>
+                <span class="pred_class"></span>
+            </h1>
         </div>
+    </div>
 
+    <div>
+        <p class="tutorial">Para saber más sobre esta aplicación visita este <a
+                href="https://github.com/gustavolsj/image-recognition" target="blank">😇 enlace →</a>
+            <br>
+            Aplicación web construida con ❤️ para los archivistas latinoamericanos utilizando Tensorflow,
+            Tensorflow.js,
+            Python, Javascript, HTML5</p>
+    </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.0.1/tf.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
-        <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/2.0.1/tf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.1/progressbar.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

@@ -1,16 +1,8 @@
-# PLANT-DISEASE-CLASSIFIER-WEB-APP-TENSORFLOWJS
+# Clasificación de la Tipología Fotográfica
 
-Tools and Technologies used 😇:-
+Aplicación web basada en Inteligencia Artifical para identificar la tipología en fotografías históricas, para saber más de su propósito, funcionamiento y área de aplicación puedes visitar este
+[enlace](https://github.com/gustavolsj/image-recognition)
 
-1. Tensorflow (for training the model in Google colab)
-2. Tensorflow.js (Embedding the model for client-side/browser inference)
-3. Javascript
-4. Python
-5. HTML and CSS
+![captura](./images/Capture.JPG)
 
-Video Demonstration 😇 :- 
-
-<img src="demo.gif" width="768" height="500" />
-
-<p>You can access the project online <a href="https://rexsimiloluwah.github.io/PLANT-DISEASE-CLASSIFIER-WEB-APP-TENSORFLOWJS/">HERE</a> </p>
-
+Está basada en tensorflowJS, para desarrollarla seguí este [ejemplo](https://rexsimiloluwah.github.io/PLANT-DISEASE-CLASSIFIER-WEB-APP-TENSORFLOWJS/) y este [tutorial](https://rexsimiloluwa.medium.com/building-a-plant-disease-classification-web-app-in-keras-and-tensorflow-js-d435829213fa)
