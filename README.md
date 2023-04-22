@@ -5,4 +5,4 @@ Aplicación web basada en Inteligencia Artifical para identificar la tipología 
 
 ![captura](./images/Capture.JPG)
 
-Está basada en tensorflowJS, para desarrollarla seguí este [ejemplo](https://rexsimiloluwah.github.io/PLANT-DISEASE-CLASSIFIER-WEB-APP-TENSORFLOWJS/) y este [tutorial](https://rexsimiloluwa.medium.com/building-a-plant-disease-classification-web-app-in-keras-and-tensorflow-js-d435829213fa)
+Está basada en tensorflowJS, para desarrollarla seguí este [ejemplo,](https://rexsimiloluwah.github.io/PLANT-DISEASE-CLASSIFIER-WEB-APP-TENSORFLOWJS/) este [repositorio](https://github.com/rexsimiloluwah/PLANT-DISEASE-CLASSIFIER-WEB-APP-TENSORFLOWJS) y este [tutorial](https://rexsimiloluwa.medium.com/building-a-plant-disease-classification-web-app-in-keras-and-tensorflow-js-d435829213fa)

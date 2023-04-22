@@ -165,8 +165,8 @@ justify-content: center;
 .progress > .inner {
 position: absolute;
 color: rgb(255, 255, 255); 
-border: 1px solid #9b9b9b;
 font-weight: bold;
+font-size: x-large;
 }
 .progress > svg {
 height: 100%;
@@ -205,8 +205,8 @@ justify-content: center; */
 color: black;
 text-align: center;
 display: block;
+text-transform: uppercase;
 }
-
 path {
     stroke: limegreen;
     stroke-width: 10;

@@ -6,7 +6,7 @@ let boxResult = document.querySelector('.box-result')
 let confidence = document.querySelector('.confidence')
 let pconf = document.querySelector('.box-result p')
 
-        
+        // ---------------------------------------------------------LIBRERIA ProgressBar JS
         let progressBar = 
             new ProgressBar.Circle('#progress', {
             color: 'limegreen',
@@ -15,7 +15,7 @@ let pconf = document.querySelector('.box-result p')
             easing: 'easeInOut'
         });
 
-        // -----------------------------------------------------------CARGA CLASES
+        // -----------------------------------------------------------CARGA CLASES JSON
         async function fetchData(){
             let response = await fetch('./class_indices.json');
             let data = await response.json();
@@ -55,7 +55,7 @@ let pconf = document.querySelector('.box-result p')
             prediction = await model.predict(tensorImg_scaled).data();
            
 
-            // ---------------------------------------------------CLASES
+            // --------------------------------------------------- MOSTRAR RESULTADO
             fetchData().then((data)=> 
                 {   
                     //   ------------------------------------------CLASE MAS PROBABLE
@@ -63,7 +63,7 @@ let pconf = document.querySelector('.box-result p')
                     
                     class_idx = Array.from(predicted_class.dataSync())[0]
                     document.querySelector('.pred_class').innerHTML = data[class_idx]
-                    document.querySelector('.inner').innerHTML = `${parseFloat(prediction[class_idx]*100).toFixed(2)}%`
+                    document.querySelector('.inner').innerHTML = `${parseFloat(prediction[class_idx]*100).toFixed(0)}%`
                     console.log(data)
                     console.log(data[class_idx])
                     console.log(prediction)
