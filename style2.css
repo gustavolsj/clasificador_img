@@ -1,17 +1,16 @@
-/* Import slimmer font: Inter (300-700) */
+/* Light theme with slim Inter font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
 
-/* Dark theme stylesheet */
 :root {
-  --bg-1: linear-gradient(180deg, #071423 0%, #071a2a 50%, #06131b 100%);
-  --surface: rgba(255, 255, 255, 0.02);
-  --text: #e6f3ea;
-  --muted: #9aa8a3;
-  --accent: #26d07a; /* bright green accent */
-  --accent-600: #1aa45a;
-  --glass: rgba(255, 255, 255, 0.03);
-  --shadow-1: 0 8px 28px rgba(0, 0, 0, 0.65);
-  --shadow-2: 0 12px 40px rgba(0, 0, 0, 0.75);
+  --bg-1: linear-gradient(180deg, #f7fbff 0%, #ffffff 60%);
+  --surface: #ffffff;
+  --text: #0b1720;
+  --muted: #5b6a72;
+  --accent: #16a34a; /* green */
+  --accent-600: #15803d;
+  --glass: rgba(255, 255, 255, 0.6);
+  --shadow-1: 0 6px 20px rgba(20, 30, 40, 0.06);
+  --shadow-2: 0 10px 30px rgba(20, 30, 40, 0.08);
   --radius: 12px;
   --max-width: 1100px;
   --gutter: 20px;
@@ -30,31 +29,106 @@ html,
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial;
+  font-weight: 300;
   color: var(--text);
   background: var(--bg-1);
   width: 100%;
   min-height: 100vh;
-  padding: 30px 16px;
+  padding: 0px 28px 18px;
 }
 
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 30px;
-  background: transparent;
+  padding: 0 12px;
 }
 
-/* Header */
-h1 {
-  font-weight: 700;
-  font-size: 1.6rem;
-  letter-spacing: 0.4px;
-  margin-bottom: 8px;
-  text-transform: none;
-  color: var(--text);
+/* Hero banner (uses images/hero.jpg). height adapts to image via clamp() */
+.hero {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw; /* full viewport width */
+  background-image: url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 0; /* quitar redondeo lateral para llegar a los bordes */
+  overflow: hidden;
+  margin-bottom: 20px;
+  /* altura aumentada +100px sobre la regla responsiva previa */
+  min-height: calc(clamp(220px, 30vh, 420px) + 100px);
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-2);
+  /* mantener solo bordes superior/inferior */
+  border-left: none;
+  border-right: none;
+  border-top: 1px solid rgba(10, 20, 30, 0.04);
+  border-bottom: 1px solid rgba(10, 20, 30, 0.04);
+  z-index: 0;
 }
-h1 span {
-  color: var(--accent);
+
+/* subtle light overlay so text remains legible */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.12)
+  );
+  z-index: 1;
+}
+
+/* content inside hero */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+  padding: 28px;
+}
+
+/* left column text */
+.hero-left {
+  flex: 1 1 60%;
+  min-width: 0;
+}
+
+/* Hacer el título y el texto más oscuros para mejor contraste sobre el hero claro */
+.hero-left h1 {
+  margin: 0 0 8px 0;
+  font-size: 1.6rem;
+  line-height: 1.05;
+  color: #04202a; /* tono más oscuro */
+  font-weight: 700;
+}
+.hero-left p {
+  color: #202122; /* texto de párrafo más oscuro */
+  margin-top: 6px;
+  line-height: 1.45;
+  font-weight: 400;
+}
+
+/* image at top-right (tipologias.jpg) */
+.hero-right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+}
+.header-img {
+  max-width: 220px;
+  width: 18vw;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 8px 26px rgba(20, 30, 40, 0.08);
+  border: 1px solid rgba(10, 20, 30, 0.04);
 }
 
 /* subtle divider */
@@ -63,57 +137,102 @@ hr {
   height: 1px;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.03),
-    rgba(255, 255, 255, 0.02)
+    rgba(11, 23, 32, 0.04),
+    rgba(11, 23, 32, 0.02)
   );
   margin: 18px 0;
 }
 
-/* Upload area - dark card */
-.upload-btn-wrapper {
-  position: relative;
-  display: block;
-  cursor: pointer;
-  width: 100%;
+/* Page layout */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: var(--gutter);
+  align-items: start;
   margin: 20px 0;
-  border-radius: var(--radius);
-  transition: transform 220ms ease, box-shadow 220ms ease;
-  box-shadow: var(--shadow-1);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(0, 0, 0, 0.05)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  padding: 18px;
 }
 
-/* Upload visual area */
-.upload-file {
-  border: 2px dashed rgba(255, 255, 255, 0.04);
-  color: var(--muted);
-  background-color: transparent;
-  width: 100%;
-  height: 160px;
-  border-radius: 10px;
-  font-size: 15px;
+/* Photo box */
+.box-foto {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  padding: 12px;
-  transition: border-color 180ms ease, background 180ms ease,
-    transform 180ms ease;
+  min-height: 420px;
+  box-shadow: var(--shadow-1);
+  border: 1px solid rgba(10, 20, 30, 0.04);
+  overflow: hidden;
 }
-.upload-file:hover {
-  border-color: rgba(38, 208, 122, 0.32);
-  background: rgba(38, 208, 122, 0.02);
-  transform: translateY(-4px);
+.box-foto img {
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 260ms ease, filter 260ms ease;
+}
+.box-foto img:hover {
+  transform: scale(1.01);
 }
 
-/* keep invisible input covering the area */
-.upload-btn-wrapper input[type="file"] {
+/* Result panel - light card */
+.box-result {
+  padding: 18px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff, #fbfdff);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  min-height: 320px;
+  box-shadow: var(--shadow-2);
+  border: 1px solid rgba(10, 20, 30, 0.04);
+}
+
+/* Upload area */
+.upload-btn-wrapper {
   width: 100%;
+  border-radius: 10px;
+  background: rgba(246, 249, 252, 0.9);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  border: 1px dashed rgba(10, 20, 30, 0.04);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.upload-btn-wrapper:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(10, 20, 30, 0.06);
+}
+
+.upload-file {
+  flex: 1;
+  color: var(--muted);
+  padding: 8px 12px;
+  font-weight: 500;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.upload-file .inner-upload {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.upload-file i {
+  font-size: 20px;
+  color: var(--accent);
+  background: rgba(22, 163, 74, 0.08);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* hidden native input */
+.upload-btn-wrapper input[type="file"] {
   position: absolute;
   left: 0;
   right: 0;
@@ -121,30 +240,6 @@ hr {
   bottom: 0;
   opacity: 0;
   cursor: pointer;
-}
-
-/* Icon + text inside upload box */
-.upload-file .inner-upload {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: rgba(230, 243, 234, 0.9);
-}
-.upload-file .inner-upload i {
-  font-size: 36px;
-  color: var(--accent);
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    180deg,
-    rgba(38, 208, 122, 0.12),
-    rgba(26, 164, 90, 0.06)
-  );
-  border-radius: 12px;
-  box-shadow: 0 8px 28px rgba(10, 30, 20, 0.45);
 }
 
 /* small helper text */
@@ -167,81 +262,36 @@ hr {
   margin-left: 6px;
   margin-top: 4px;
   color: var(--accent-600);
-  border: 1px solid rgba(38, 208, 122, 0.12);
+  border: 1px solid rgba(22, 163, 74, 0.12);
   padding: 6px;
   border-radius: 50%;
 }
 
-/* Layout: main area */
-.row {
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: var(--gutter);
-  align-items: start;
-  margin: 20px 0;
-}
-
-/* Photo box */
-.box-foto {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.01),
-    rgba(255, 255, 255, 0)
-  );
-  border-radius: var(--radius);
-  padding: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 420px;
-  box-shadow: var(--shadow-2);
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-}
-.box-foto img {
-  width: 100%;
-  height: auto;
-  max-height: 78vh;
-  object-fit: contain;
-  border-radius: 8px;
-  transition: transform 260ms ease, filter 260ms ease;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6));
-}
-.box-foto img:hover {
-  transform: scale(1.01);
-}
-
-/* Result panel - dark glass card */
-.box-result {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.02),
-    rgba(255, 255, 255, 0.01)
-  );
-  backdrop-filter: blur(6px);
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: var(--shadow-2);
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-items: center;
-  min-height: 200px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-}
-.box-result p {
-  background: linear-gradient(180deg, var(--accent), var(--accent-600));
-  color: #04110a;
-  font-weight: 700;
+/* init status chip */
+.init_status {
+  display: inline-block;
+  width: fit-content;
+  margin: 6px auto;
+  background: linear-gradient(90deg, var(--accent), var(--accent-600));
+  color: #04210a;
   padding: 10px 14px;
-  margin-top: 6px;
-  border-radius: 12px;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  font-size: 0.95rem;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.08);
 }
 
-/* Accuracy circle */
+/* Prediction label */
+.pred_class {
+  display: block;
+  margin-top: 6px;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  text-align: center;
+}
+
+/* Accuracy circular mini */
 .accuracy {
   display: flex;
   justify-content: center;
@@ -249,91 +299,68 @@ hr {
   width: 100%;
 }
 .progress {
-  width: 130px;
-  height: 130px;
-  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: conic-gradient(var(--accent) 0%, rgba(255, 255, 255, 0.03) 0%);
-  box-shadow: inset 0 -6px 18px rgba(0, 0, 0, 0.6);
+  background: conic-gradient(var(--accent) 0%, rgba(10, 20, 30, 0.04) 0%);
+  box-shadow: inset 0 -6px 16px rgba(10, 20, 30, 0.04);
 }
 .progress > .inner {
-  position: absolute;
-  color: var(--text);
   font-weight: 700;
+  color: var(--text);
   font-size: 1.2rem;
 }
-.progress > svg {
-  height: 100%;
-  width: 100%;
-  display: block;
-}
-path {
-  stroke: var(--accent);
-  stroke-width: 10;
-  fill-opacity: 0.06;
-  transition: stroke 220ms ease;
-}
 
-/* status button / init */
-.init_status {
-  display: inline-block;
-  width: fit-content;
-  margin: 6px auto;
-  background: linear-gradient(180deg, var(--accent), var(--accent-600));
-  color: #05110a;
-  padding: 12px 18px;
-  border-radius: 12px;
-  transition: transform 180ms ease, box-shadow 180ms ease;
-  text-align: center;
-  cursor: default;
-}
-.init_status:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 40px rgba(26, 164, 90, 0.16);
-}
-
-/* small utils */
+/* helper text */
 .tutorial {
-  text-align: center;
   color: var(--muted);
-  font-size: 0.95rem;
-}
-.pred_class {
-  color: var(--text);
+  font-size: 0.92rem;
   text-align: center;
-  display: block;
-  text-transform: uppercase;
-  font-size: 0.95rem;
-  letter-spacing: 0.6px;
+  margin-top: 14px;
 }
 
-/* responsive: stack on small screens */
+/* responsive */
 @media (max-width: 880px) {
+  .hero-content {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px;
+  }
+  .header-img {
+    width: 44vw;
+    max-width: 360px;
+    margin: 12px auto 0;
+  }
+  .hero-left h1 {
+    font-size: 1.25rem;
+  }
   .row {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
   .box-foto {
-    min-height: 320px;
-    margin-bottom: 12px;
+    min-height: 300px;
   }
   .box-result {
-    width: 100%;
-    padding: 16px;
+    order: 2;
+  }
+  .box-foto {
+    order: 1;
   }
 }
 
 /* accessibility: focus states */
 .upload-btn-wrapper:focus-within,
 .upload-file:focus {
-  outline: 3px solid rgba(38, 208, 122, 0.12);
+  outline: 3px solid rgba(22, 163, 74, 0.12);
   outline-offset: 4px;
 }
 
 /* subtle hover for result items */
 .box-result > *:hover {
   transform: translateY(-2px);
-  transition: transform 180ms ease;
+  transition: transform 160ms ease;
 }
