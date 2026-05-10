@@ -1,0 +1,4 @@
+Repostorio de git para la identificacion del proceso fotografico 
+
+Estos modelos se produjeron a traves de la pagina de teachable machine porque no pude hacerlo nunca de manera local 
+exportando o convirtiendo el modelo que funciona en python a la version tf_js.  
